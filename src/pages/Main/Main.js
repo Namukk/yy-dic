@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/pages/Main/Main.js
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import styled from "styled-components";
@@ -74,23 +75,25 @@ const MainRight = styled.div`
     background-color: rgb(200, 200, 200);
   }
 `;
+=======
+import React from 'react';
+import { MainWrapper, MainLeft, HotDic, HotDicContent, DummyAD, MonthlyBestWrapper, MainRight, TodayTop } from './style'
+import { dummyHotDic, dummyMonthlyBestDic, dummyMonthlyBestComunity, dummyTodayBest} from './dummy'
 
-const TodayTop = styled.ol`
-  width: 400px;
-  border: 1px solid black;
-  line-height: 1.5em;
-  h3 {
-    text-align: center;
-  }
-`;
+
+>>>>>>> 1f47fec5f6faf64568dbfb4e5b690968dc368108:src/pages/Main/index.js
+
 
 const Main = () => {
   return (
     <div>
+<<<<<<< HEAD:src/pages/Main/Main.js
       <TodoInput />
       <Router>
         <Navigation />
       </Router>
+=======
+>>>>>>> 1f47fec5f6faf64568dbfb4e5b690968dc368108:src/pages/Main/index.js
       <MainWrapper>
         <MainLeft>
           <h2>HOT DIC</h2>

@@ -22,15 +22,19 @@ const LogoImage = styled.img`
   margin: 0 5vw 0 5vw;
 `;
 
+const TestLogo = styled(Link)`
+  width: 150px;
+  margin: 0 5vw 0 5vw;
+  font-size: 20px;
+`;
+
 const TopInput = () => {
   return (
     <TopWrapper>
-      <Link to="/">
-        <LogoImage
-          src="https://github.com/Namukk/yy-dic/blob/master/src/logo.png?raw=true"
-          alt="logo"
-        />
-      </Link>
+      {/* <LogoImage src="https://github.com/Namukk/yy-dic/blob/master/src/logo.png?raw=true" alt="logo"/> */}
+      <TestLogo Link to="/">
+        MoreUget語
+      </TestLogo>
       <TopForm action="">
         <select name="select">
           <option value="all">통합</option>
