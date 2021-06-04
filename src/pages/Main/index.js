@@ -1,18 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import TodoInput from '../../components/TopInput';
 import { dummyHotDic, dummyMonthlyBestDic, dummyMonthlyBestComunity, dummyTodayBest} from './dummy'
 
-const DummyRouter = styled.div`
-  width: 95vw;
-  background-color: gray;
-  font-size: 18px;
-  text-align: center;
-  border: 1px solid black;
-  padding: 10px;
-  margin: 10px auto;
-`;
 
 const DummyAD = styled.div`
   width : 90%;
@@ -91,8 +80,6 @@ const TodayTop = styled.ol`
 const Main = () => {
   return (
     <div>
-      <TodoInput />
-      <DummyRouter>라우터 넣을 자리겠지 ?</DummyRouter>
       <MainWrapper>
         <MainLeft>
           <h2>HOT DIC</h2>

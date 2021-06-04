@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const TopWrapper = styled.section`
@@ -21,10 +22,17 @@ const LogoImage = styled.img`
   margin: 0 5vw 0 5vw;
 `;
 
+const TestLogo = styled(Link)`
+  width: 150px;
+  margin: 0 5vw 0 5vw;
+  font-size: 20px;
+`;
+
 const TopInput = () => {
   return (
     <TopWrapper>
-      <LogoImage src="https://github.com/Namukk/yy-dic/blob/master/src/logo.png?raw=true" alt="logo"/>
+      {/* <LogoImage src="https://github.com/Namukk/yy-dic/blob/master/src/logo.png?raw=true" alt="logo"/> */}
+      <TestLogo Link to="/">MoreUget語</TestLogo>
       <TopForm action="">
         <select name="select" >
           <option value="all">통합</option>
