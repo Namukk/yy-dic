@@ -1,11 +1,9 @@
 import React from "react";
-import Main from "./pages/Main";
+import Router from './components/Router'
 
 function App() {
   return (
-    <div>
-      <Main />
-    </div>
+    <Router />
   );
 }
 
