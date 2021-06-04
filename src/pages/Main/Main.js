@@ -1,10 +1,14 @@
-<<<<<<< HEAD:src/pages/Main/Main.js
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import styled from "styled-components";
-import AuthForm from "../../components/AuthForm";
-import Navigation from "../../components/Navigation";
-import TodoInput from "../../components/TopInput";
+import {
+  MainWrapper,
+  MainLeft,
+  HotDic,
+  HotDicContent,
+  DummyAD,
+  MonthlyBestWrapper,
+  MainRight,
+  TodayTop,
+} from "./style";
 import {
   dummyHotDic,
   dummyMonthlyBestDic,
@@ -12,88 +16,9 @@ import {
   dummyTodayBest,
 } from "./dummy";
 
-const DummyAD = styled.div`
-  width: 90%;
-  background-color: gray;
-  font-size: 18px;
-  text-align: center;
-  border: 1px solid black;
-  padding: 30px;
-  margin: 10px auto;
-`;
-
-const MainWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const MainLeft = styled.div`
-  width: 70vw;
-  margin: 20px;
-`;
-
-const HotDic = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
-
-const HotDicContent = styled.div`
-  text-align: center;
-  .dic-cover {
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 125px;
-    height: 150px;
-    border: solid 5px black;
-    font-size: 30px;
-    font-weight: 700;
-    color: purple;
-  }
-`;
-
-const MonthlyBestWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  h3 {
-    text-align: center;
-  }
-  .monthly-content {
-    width: 600px;
-    border: solid 1px black;
-    font-size: 20px;
-    line-height: 2em;
-  }
-`;
-
-const MainRight = styled.div`
-  .dummy-login {
-    width: 400px;
-    height: 200px;
-    background-color: rgb(200, 200, 200);
-  }
-`;
-=======
-import React from 'react';
-import { MainWrapper, MainLeft, HotDic, HotDicContent, DummyAD, MonthlyBestWrapper, MainRight, TodayTop } from './style'
-import { dummyHotDic, dummyMonthlyBestDic, dummyMonthlyBestComunity, dummyTodayBest} from './dummy'
-
-
->>>>>>> 1f47fec5f6faf64568dbfb4e5b690968dc368108:src/pages/Main/index.js
-
-
 const Main = () => {
   return (
     <div>
-<<<<<<< HEAD:src/pages/Main/Main.js
-      <TodoInput />
-      <Router>
-        <Navigation />
-      </Router>
-=======
->>>>>>> 1f47fec5f6faf64568dbfb4e5b690968dc368108:src/pages/Main/index.js
       <MainWrapper>
         <MainLeft>
           <h2>HOT DIC</h2>
