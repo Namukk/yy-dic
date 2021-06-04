@@ -1,10 +1,20 @@
-import React from 'react';
-import { MainWrapper, MainLeft, HotDic, HotDicContent, DummyAD, MonthlyBestWrapper, MainRight, TodayTop } from './style'
-import { dummyHotDic, dummyMonthlyBestDic, dummyMonthlyBestComunity, dummyTodayBest} from './dummy'
-
-
-
-
+import React from "react";
+import {
+  MainWrapper,
+  MainLeft,
+  HotDic,
+  HotDicContent,
+  DummyAD,
+  MonthlyBestWrapper,
+  MainRight,
+  TodayTop,
+} from "./style";
+import {
+  dummyHotDic,
+  dummyMonthlyBestDic,
+  dummyMonthlyBestComunity,
+  dummyTodayBest,
+} from "./dummy";
 
 const Main = () => {
   return (
@@ -16,8 +26,8 @@ const Main = () => {
           <HotDic>
             {dummyHotDic.map((v) => (
               <HotDicContent key={v.id}>
-                <div className='dic-cover'>{v.name[0]}</div>
-                <div className='dic-name'>{v.name}</div>
+                <div className="dic-cover">{v.name[0]}</div>
+                <div className="dic-name">{v.name}</div>
               </HotDicContent>
             ))}
           </HotDic>
@@ -45,7 +55,7 @@ const Main = () => {
         </MainLeft>
 
         <MainRight>
-          <div className="dummy-login">로그인 부분</div>
+          <AuthForm />
           <TodayTop>
             <h3>오늘의 인기글</h3>
             {dummyTodayBest.map((v) => (
