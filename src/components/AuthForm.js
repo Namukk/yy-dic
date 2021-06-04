@@ -1,4 +1,4 @@
-import { authService } from "fbase";
+import { authService } from "../fbase";
 import React, { useState } from "react";
 
 const AuthForm = () => {
@@ -60,13 +60,14 @@ const AuthForm = () => {
         <input
           type="submit"
           className="authInput authSubmit"
-          value={newAccount ? "Create Account" : "Sign in"}
+          value="Login"
+          // value={newAccount ? "Create Account" : "Sign in"}
         />
         {error && <span className="authError">{error}</span>}
       </form>
-      <span onClick={toggleAccount} className="authSwitch">
+      {/* <span onClick={toggleAccount} className="authSwitch">
         {newAccount ? "Sign in" : "Create Account"}
-      </span>
+      </span> */}
     </>
   );
 };

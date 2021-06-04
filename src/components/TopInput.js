@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const TopWrapper = styled.section`
   display: flex;
@@ -12,7 +13,7 @@ const TopForm = styled.form`
   height: 30px;
   width: 100%;
   input {
-    width: 75%;
+    width: 50%;
   }
 `;
 
@@ -24,14 +25,19 @@ const LogoImage = styled.img`
 const TopInput = () => {
   return (
     <TopWrapper>
-      <LogoImage src="https://github.com/Namukk/yy-dic/blob/master/src/logo.png?raw=true" alt="logo"/>
+      <Link to="/">
+        <LogoImage
+          src="https://github.com/Namukk/yy-dic/blob/master/src/logo.png?raw=true"
+          alt="logo"
+        />
+      </Link>
       <TopForm action="">
-        <select name="select" >
+        <select name="select">
           <option value="all">통합</option>
           <option value="one">분류1</option>
           <option value="twe">분류2</option>
         </select>
-        <input type="text" p/>
+        <input type="text" p />
         <button type="button">검색</button>
       </TopForm>
     </TopWrapper>

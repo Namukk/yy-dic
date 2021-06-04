@@ -1,21 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
-
-import TodoInput from '../../components/TopInput';
-import { dummyHotDic, dummyMonthlyBestDic, dummyMonthlyBestComunity, dummyTodayBest} from './dummy'
-
-const DummyRouter = styled.div`
-  width: 95vw;
-  background-color: gray;
-  font-size: 18px;
-  text-align: center;
-  border: 1px solid black;
-  padding: 10px;
-  margin: 10px auto;
-`;
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import styled from "styled-components";
+import AuthForm from "../../components/AuthForm";
+import Navigation from "../../components/Navigation";
+import TodoInput from "../../components/TopInput";
+import {
+  dummyHotDic,
+  dummyMonthlyBestDic,
+  dummyMonthlyBestComunity,
+  dummyTodayBest,
+} from "./dummy";
 
 const DummyAD = styled.div`
-  width : 90%;
+  width: 90%;
   background-color: gray;
   font-size: 18px;
   text-align: center;
@@ -31,7 +28,7 @@ const MainWrapper = styled.div`
 
 const MainLeft = styled.div`
   width: 70vw;
-  margin:20px;
+  margin: 20px;
 `;
 
 const HotDic = styled.div`
@@ -62,7 +59,7 @@ const MonthlyBestWrapper = styled.div`
   h3 {
     text-align: center;
   }
-  .monthly-content{
+  .monthly-content {
     width: 600px;
     border: solid 1px black;
     font-size: 20px;
@@ -74,7 +71,7 @@ const MainRight = styled.div`
   .dummy-login {
     width: 400px;
     height: 200px;
-    background-color: rgb(200,200,200);
+    background-color: rgb(200, 200, 200);
   }
 `;
 
@@ -87,12 +84,13 @@ const TodayTop = styled.ol`
   }
 `;
 
-
 const Main = () => {
   return (
     <div>
       <TodoInput />
-      <DummyRouter>라우터 넣을 자리겠지 ?</DummyRouter>
+      <Router>
+        <Navigation />
+      </Router>
       <MainWrapper>
         <MainLeft>
           <h2>HOT DIC</h2>
@@ -100,8 +98,8 @@ const Main = () => {
           <HotDic>
             {dummyHotDic.map((v) => (
               <HotDicContent key={v.id}>
-                <div className='dic-cover'>{v.name[0]}</div>
-                <div className='dic-name'>{v.name}</div>
+                <div className="dic-cover">{v.name[0]}</div>
+                <div className="dic-name">{v.name}</div>
               </HotDicContent>
             ))}
           </HotDic>
@@ -129,7 +127,7 @@ const Main = () => {
         </MainLeft>
 
         <MainRight>
-          <div className="dummy-login">로그인 부분</div>
+          <AuthForm />
           <TodayTop>
             <h3>오늘의 인기글</h3>
             {dummyTodayBest.map((v) => (
