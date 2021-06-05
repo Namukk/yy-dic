@@ -15,6 +15,7 @@ import {
   dummyMonthlyBestComunity,
   dummyTodayBest,
 } from "./dummy";
+import LoginForm from "../../components/LoginForm";
 
 const Main = () => {
   return (
@@ -55,7 +56,7 @@ const Main = () => {
         </MainLeft>
 
         <MainRight>
-          <AuthForm />
+          <LoginForm />
           <TodayTop>
             <h3>오늘의 인기글</h3>
             {dummyTodayBest.map((v) => (

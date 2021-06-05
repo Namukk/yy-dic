@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [newAccount, setNewAccount] = useState(true);
+  const [newAccount, setNewAccount] = useState(false);
   const [error, setError] = useState("");
   const onChange = (event) => {
     const {
@@ -21,14 +21,7 @@ const Login = () => {
     event.preventDefault();
     try {
       let data;
-      if (newAccount) {
-        data = await authService.createUserWithEmailAndPassword(
-          email,
-          password
-        );
-      } else {
-        data = await authService.signInWithEmailAndPassword(email, password);
-      }
+      data = await authService.signInWithEmailAndPassword(email, password);
       console.log(data);
     } catch (error) {
       setError(error.message);
@@ -64,9 +57,9 @@ const Login = () => {
         />
         {error && <span className="authError">{error}</span>}
       </form>
-      <span onClick={toggleAccount} className="authSwitch">
+      {/* <span onClick={toggleAccount} className="authSwitch">
         {newAccount ? "Sign in" : "Create Account"}
-      </span>
+      </span> */}
     </>
   );
 };
