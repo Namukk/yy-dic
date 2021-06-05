@@ -48,15 +48,20 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
               <Route path="/profile">
                 <Profile userObj={userObj} refreshUser={refreshUser} />
               </Route>
-              <Route path="/signup">
-                <UserInfo />
-                <SignUp />
-              </Route>
+              <Redirect from="/signup" to="/" />
               <AppFooter />
             </div>
           ) : (
             <>
-              <Route exact path="/"></Route>
+              <Route exact path="/">
+                <UserInfo userObj={userObj} />
+                <TopInput />
+                <Main />
+              </Route>
+              <Route path="/signup">
+                <UserInfo />
+                <SignUp />
+              </Route>
               <Redirect from="*" to="/" />
             </>
           )}
