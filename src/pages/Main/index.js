@@ -23,7 +23,7 @@ const Main = () => {
       <MainWrapper>
         <MainLeft>
           <h2>HOT DIC</h2>
-          <hr />
+
           <HotDic>
             {dummyHotDic.map((v) => (
               <HotDicContent key={v.id}>
@@ -34,7 +34,7 @@ const Main = () => {
           </HotDic>
           <DummyAD>광고에요 광고!! 누르지 마세요!</DummyAD>
           <h2>Monthly Best Contents</h2>
-          <hr />
+
           <MonthlyBestWrapper>
             <div className="monthly-content">
               <h3>사전</h3>

@@ -1,10 +1,41 @@
 import { authService } from "../fbase";
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Span = styled.span`
   display: flex;
-  margin-bottom: 50px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
+const Form = styled.form`
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  .authInput {
+    height: 25px;
+    margin-bottom: 10px;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  input {
+    background: none;
+    border-style: none;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  a {
+    font-size: 15px;
+  }
 `;
 
 const LoginForm = () => {
@@ -40,7 +71,7 @@ const LoginForm = () => {
   return (
     <>
       <Span>
-        <form onSubmit={onSubmit} className="container">
+        <Form onSubmit={onSubmit} className="container">
           <input
             name="email"
             type="email"
@@ -61,12 +92,16 @@ const LoginForm = () => {
           />
           <input
             type="submit"
-            className="authInput authSubmit"
+            className="authSubmit"
             value="Login"
             // value={newAccount ? "Create Account" : "Sign in"}
           />
+          <Link to="/signup">signup</Link>
+
+          
+          
           {error && <span className="authError">{error}</span>}
-        </form>
+        </Form>
         {/* <span onClick={toggleAccount} className="authSwitch">
         {newAccount ? "Sign in" : "Create Account"}
       </span> */}

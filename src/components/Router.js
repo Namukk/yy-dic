@@ -1,7 +1,6 @@
 import React from "react";
 import {
   BrowserRouter as Router,
-  Redirect,
   Route,
   Switch,
 } from "react-router-dom";
@@ -12,6 +11,7 @@ import UserInfo from "./UserInfo";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Profile from "./Profile";
+import Navigation from "./Navigation";
 
 const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
   return (
@@ -22,51 +22,39 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
           <Main userObj={userObj} />
         </>
       )} */}
-      <Switch>
-        <>
-          {isLoggedIn ? (
-            <div>
-              <Route exact path="/">
-                <UserInfo userObj={userObj} />
-                <TopInput />
-                <Main />
-              </Route>
-              <Route path="/dic">
-                <UserInfo />
-                <TopInput />
-                Dictionary
-              </Route>
-              <Route path="/com">
-                <UserInfo />
-                <TopInput />
-                Community
-              </Route>
-              <Route path="/login">
-                <UserInfo />
-                <Login />
-              </Route>
-              <Route path="/profile">
-                <Profile userObj={userObj} refreshUser={refreshUser} />
-              </Route>
-              <Redirect from="/signup" to="/" />
-              <AppFooter />
-            </div>
-          ) : (
-            <>
-              <Route exact path="/">
-                <UserInfo userObj={userObj} />
-                <TopInput />
-                <Main />
-              </Route>
-              <Route path="/signup">
-                <UserInfo />
-                <SignUp />
-              </Route>
-              <Redirect from="*" to="/" />
-            </>
-          )}
-        </>
+      <Switch>  
+        <Route exact path="/">
+          <UserInfo userObj={userObj} />
+          <TopInput />
+          <Navigation />
+          <Main />
+        </Route>
+        <Route path="/dic">
+          <UserInfo />
+          <TopInput />
+          <Navigation />
+          Dictionary
+        </Route>
+        <Route path="/com">
+          <UserInfo />
+          <TopInput />
+          <Navigation />
+          Community
+        </Route>
+        <Route path="/login">
+          <UserInfo />
+          <Login />
+        </Route>
+        <Route path="/profile">
+          <Profile userObj={userObj} refreshUser={refreshUser} isLoggedIn={isLoggedIn} />
+        </Route>
+        <Route path="/signup">
+          <UserInfo />
+          <SignUp isLoggedIn={isLoggedIn}/>
+        </Route>
+        
       </Switch>
+      <AppFooter />
     </Router>
   );
 };
