@@ -11,13 +11,18 @@ margin: 10px auto;
 `;
 
 export const MainWrapper = styled.div`
-display: flex;
-align-items: center;
+  display: flex;
 `;
 
 export const MainLeft = styled.div`
-width: 70vw;
-margin:20px;
+  width: 70vw;
+  margin:0 20px;
+  h2 {
+    font-size: 25px;
+    border-bottom: 2px solid black;
+    margin-bottom: 15px;
+    padding : 10px 0;
+  }
 `;
 
 export const HotDic = styled.div`

@@ -1,8 +1,9 @@
 import { authService, dbService } from "../fbase";
 import React, { useEffect, useState } from "react";
 // import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router";
 
-const Profile = ({ userObj, refreshUser }) => {
+const Profile = ({ userObj, refreshUser, isLoggedIn }) => {
   //   const history = useHistory();
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
   const onLogOutClick = () => {
@@ -39,29 +40,35 @@ const Profile = ({ userObj, refreshUser }) => {
   //     getMyNweets();
   //   }, []);
   return (
-    <div className="container">
-      <form onSubmit={onSubmit} className="profileForm">
-        <input
-          onChange={onChange}
-          type="text"
-          autoFocus
-          placeholder="Display name"
-          value={newDisplayName}
-          className="formInput"
-        />
-        <input
-          type="submit"
-          value="Update Profile"
-          className="formBtn"
-          style={{
-            marginTop: 10,
-          }}
-        />
-      </form>
-      <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
-        Log Out
-      </span>
-    </div>
+    <>
+      { !isLoggedIn ? <Redirect to="/"/> : 
+        <div className="container">
+      
+        <form onSubmit={onSubmit} className="profileForm">
+          <input
+            onChange={onChange}
+            type="text"
+            autoFocus
+            placeholder="Display name"
+            value={newDisplayName}
+            className="formInput"
+          />
+          <input
+            type="submit"
+            value="Update Profile"
+            className="formBtn"
+            style={{
+              marginTop: 10,
+            }}
+          />
+        </form>
+        <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
+          Log Out
+        </span>
+      </div>
+      }
+    </>
+    
   );
 };
 
