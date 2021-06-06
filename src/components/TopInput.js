@@ -10,6 +10,7 @@ const TopWrapper = styled.section`
 
 const TopForm = styled.form`
   display: flex;
+  justify-content: center;
   height: 30px;
   width: 100%;
   input {
@@ -17,10 +18,10 @@ const TopForm = styled.form`
   }
 `;
 
-const LogoImage = styled.img`
-  width: 60px;
-  margin: 0 5vw 0 5vw;
-`;
+// const LogoImage = styled.img`
+//   width: 60px;
+//   margin: 0 5vw 0 5vw;
+// `;
 
 const TestLogo = styled(Link)`
   width: 150px;

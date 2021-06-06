@@ -96,10 +96,8 @@ const LoginForm = () => {
             value="Login"
             // value={newAccount ? "Create Account" : "Sign in"}
           />
-          <Link to="/signup">signup</Link>
+          {/* <Link to="/signup">signup</Link> */}
 
-          
-          
           {error && <span className="authError">{error}</span>}
         </Form>
         {/* <span onClick={toggleAccount} className="authSwitch">

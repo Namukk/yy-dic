@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const UserInfoWrapper = styled.div`
   display: flex;
@@ -17,12 +17,16 @@ const UserLink = styled(Link)`
   }
 `;
 
-const UserInfo = () => {
+const UserInfo = ({ isLoggedIn }) => {
   // isLoggedIn props로 로그인 되었을 때와 아닐 때 다르게 보일 예정
   return (
     <UserInfoWrapper>
-      <UserLink to="/login">Login</UserLink>
-      <UserLink to="/signup">join</UserLink>
+      {isLoggedIn ? (
+        <UserLink to="/profile">Mypage</UserLink>
+      ) : (
+        <UserLink to="/signup">join</UserLink>
+      )}
+      {/* <UserLink to="/login">Login</UserLink> */}
     </UserInfoWrapper>
   );
 };

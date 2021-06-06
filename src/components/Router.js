@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "../pages/Main";
 import AppFooter from "./Footer";
 import TopInput from "./TopInput";
@@ -22,9 +18,9 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
           <Main userObj={userObj} />
         </>
       )} */}
-      <Switch>  
+      <Switch>
         <Route exact path="/">
-          <UserInfo userObj={userObj} />
+          <UserInfo userObj={userObj} isLoggedIn={isLoggedIn} />
           <TopInput />
           <Navigation />
           <Main />
@@ -46,13 +42,16 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
           <Login />
         </Route>
         <Route path="/profile">
-          <Profile userObj={userObj} refreshUser={refreshUser} isLoggedIn={isLoggedIn} />
+          <Profile
+            userObj={userObj}
+            refreshUser={refreshUser}
+            isLoggedIn={isLoggedIn}
+          />
         </Route>
         <Route path="/signup">
           <UserInfo />
-          <SignUp isLoggedIn={isLoggedIn}/>
+          <SignUp isLoggedIn={isLoggedIn} />
         </Route>
-        
       </Switch>
       <AppFooter />
     </Router>
