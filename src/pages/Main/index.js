@@ -16,8 +16,18 @@ import {
   dummyTodayBest,
 } from "./dummy";
 import LoginForm from "../../components/LoginForm";
+import Profile from "../../components/Profile";
+import styled from "styled-components";
 
-const Main = () => {
+const Name = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+`;
+
+const Main = ({ isLoggedIn, userObj }) => {
   return (
     <div>
       <MainWrapper>
@@ -56,7 +66,11 @@ const Main = () => {
         </MainLeft>
 
         <MainRight>
-          <LoginForm />
+          {isLoggedIn ? (
+            <Name>{userObj.displayName}님 환영합니다</Name>
+          ) : (
+            <LoginForm />
+          )}
           <TodayTop>
             <h3>오늘의 인기글</h3>
             {dummyTodayBest.map((v) => (

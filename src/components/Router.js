@@ -23,7 +23,7 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
           <UserInfo userObj={userObj} isLoggedIn={isLoggedIn} />
           <TopInput />
           <Navigation />
-          <Main />
+          <Main userObj={userObj} isLoggedIn={isLoggedIn} />
         </Route>
         <Route path="/dic">
           <UserInfo />
