@@ -2,6 +2,7 @@ import { authService } from "../fbase";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import SocialLogin from "./SocialLogin";
 
 const Span = styled.span`
   display: flex;
@@ -67,7 +68,6 @@ const LoginForm = () => {
     }
   };
 
-  // const toggleAccount = () => setNewAccount((prev) => !prev);
   return (
     <>
       <Span>
@@ -90,19 +90,10 @@ const LoginForm = () => {
             onChange={onChange}
             className="authInput"
           />
-          <input
-            type="submit"
-            className="authSubmit"
-            value="Login"
-            // value={newAccount ? "Create Account" : "Sign in"}
-          />
-          {/* <Link to="/signup">signup</Link> */}
-
+          <input type="submit" className="authSubmit" value="Login" />
           {error && <span className="authError">{error}</span>}
+          <SocialLogin />
         </Form>
-        {/* <span onClick={toggleAccount} className="authSwitch">
-        {newAccount ? "Sign in" : "Create Account"}
-      </span> */}
       </Span>
     </>
   );
