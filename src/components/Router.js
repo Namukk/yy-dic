@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Profile from "./Profile";
 import Navigation from "./Navigation";
+import DicRouter from "./DicRouter";
 
 const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
   return (
@@ -25,12 +26,8 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
           <Navigation />
           <Main userObj={userObj} isLoggedIn={isLoggedIn} />
         </Route>
-        <Route path="/dic">
-          <UserInfo />
-          <TopInput />
-          <Navigation />
-          Dictionary
-        </Route>
+        <Route exact path="/dic" component={DicRouter} />
+        <Route path="/dic/:id" component={DicRouter} />
         <Route path="/com">
           <UserInfo />
           <TopInput />
