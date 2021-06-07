@@ -4,7 +4,7 @@ import Main from "../pages/Main";
 import AppFooter from "./Footer";
 import TopInput from "./TopInput";
 import UserInfo from "./UserInfo";
-import Login from "../pages/Login";
+// import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Profile from "./Profile";
 import Navigation from "./Navigation";
@@ -34,10 +34,10 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
           <Navigation />
           Community
         </Route>
-        <Route path="/login">
+        {/* <Route path="/login">
           <UserInfo />
           <Login />
-        </Route>
+        </Route> */}
         <Route path="/profile">
           <Profile
             userObj={userObj}
