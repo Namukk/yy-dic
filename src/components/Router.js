@@ -2,42 +2,31 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "../pages/Main";
 import AppFooter from "./Footer";
-import TopInput from "./TopInput";
-import UserInfo from "./UserInfo";
-// import Login from "../pages/Login";
+import UserInfo from "./MainTop/UserInfo";
+import MainTop from "./MainTop";
 import SignUp from "../pages/SignUp";
 import Profile from "./Profile";
-import Navigation from "./Navigation";
 import DicRouter from "./DicRouter";
 
 const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
   return (
     <Router>
-      {/* {isLoggedIn && (
-        <>
-          <TopInput />
-          <Main userObj={userObj} />
-        </>
-      )} */}
       <Switch>
         <Route exact path="/">
-          <UserInfo userObj={userObj} isLoggedIn={isLoggedIn} />
-          <TopInput />
-          <Navigation />
+          <MainTop userObj={userObj} isLoggedIn={isLoggedIn}/>
           <Main userObj={userObj} isLoggedIn={isLoggedIn} />
         </Route>
-        <Route exact path="/dic" component={DicRouter} />
-        <Route path="/dic/:id" component={DicRouter} />
+        <Route exact path="/dic"
+          render={props => <><MainTop userObj={userObj} isLoggedIn={isLoggedIn}/> <DicRouter match = {props.match}/> </>}
+        />
+        <Route path="/dic/:id" 
+          render={props => <><MainTop userObj={userObj} isLoggedIn={isLoggedIn}/> <DicRouter match = {props.match}/> </>}
+        />
+          
         <Route path="/com">
-          <UserInfo />
-          <TopInput />
-          <Navigation />
+          <MainTop userObj={userObj} isLoggedIn={isLoggedIn}/>
           Community
         </Route>
-        {/* <Route path="/login">
-          <UserInfo />
-          <Login />
-        </Route> */}
         <Route path="/profile">
           <Profile
             userObj={userObj}
@@ -46,7 +35,7 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
           />
         </Route>
         <Route path="/signup">
-          <UserInfo />
+          <UserInfo userObj={userObj} isLoggedIn={isLoggedIn}/>
           <SignUp isLoggedIn={isLoggedIn} />
         </Route>
       </Switch>
