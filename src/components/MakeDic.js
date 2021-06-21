@@ -11,7 +11,7 @@ const MakeDic = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     await dbService.collection("words").add({
-      id: vocaId,
+      vocaId,
       createdAt: Date.now(),
       voca: [{ name: title, meaning: content }],
     });

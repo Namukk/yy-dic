@@ -1,27 +1,16 @@
 import React from "react";
 import MakeDic from "./MakeDic";
 import { Link } from "react-router-dom";
+import VocaPage from "../pages/VocaPage";
 
 const DicRouter = ({ match }) => {
   const { id } = match.params;
   if (id === "form") {
-    return (
-      <>
-        <MakeDic />
-      </>
-    );
-  } else if (id === "1") {
-    return (
-      <>
-        <div>포켓몬 단어 페이지</div>
-      </>
-    );
-  } else if (id === "2") {
-    return (
-      <>
-        <div>코난 단어 페이지</div>
-      </>
-    );
+    return <MakeDic />
+
+  } else if (!isNaN(id)) {
+    return <VocaPage vocaId={id}/>
+        
   }
   return (
     <>
