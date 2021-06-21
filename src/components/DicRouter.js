@@ -1,5 +1,4 @@
 import React from "react";
-import DicForm from "./DicForm";
 import MakeDic from "./MakeDic";
 import { Link } from "react-router-dom";
 
