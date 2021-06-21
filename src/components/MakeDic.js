@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { dbService } from "../fbase";
+import { useHistory } from "react-router-dom";
 
 const MakeDic = () => {
-  const [vocaId, setVocaId] = useState("");
+  let history = useHistory();
+  const [vocaId, setVocaId] = useState("1");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    dbService.collection("words").add({
-      id: vocaId,
+    await dbService.collection("words").add({
+      vocaId,
       createdAt: Date.now(),
       voca: [{ name: title, meaning: content }],
     });
+    history.push("/dic")
   };
 
   const onChange = (event) => {
