@@ -10,9 +10,11 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 17px;
   label {
-    margin-bottom: 15px;
+    width : 400px;
+    text-align: left;
+    margin: 0 0 15px 10px;
   }
   input, select, textarea {
     width: 400px;
@@ -25,11 +27,10 @@ const Form = styled.form`
   }
   textarea {
     height: 100px;
-    
   }
   button {
     width: 150px;
-    font-size: 18px;
+    font-size: 17px;
     background: none;
     border: 3px black solid;
     border-radius: 10px;
@@ -41,7 +42,6 @@ const Form = styled.form`
     }
   }
 `;
-
 
 const MakeDic = () => {
   let history = useHistory();
