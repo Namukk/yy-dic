@@ -1,6 +1,47 @@
 import React, { useState } from "react";
 import { dbService } from "../fbase";
 import { useHistory } from "react-router-dom";
+import styled from 'styled-components';
+
+const Form = styled.form`
+  width: 100%;
+  transform: translateY(15vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  label {
+    margin-bottom: 15px;
+  }
+  input, select, textarea {
+    width: 400px;
+    height: 40px;
+    padding : 5px;
+    margin-bottom: 20px;
+    border: 3px black solid;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  textarea {
+    height: 100px;
+    
+  }
+  button {
+    width: 150px;
+    font-size: 18px;
+    background: none;
+    border: 3px black solid;
+    border-radius: 10px;
+    padding : 5px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(0,0,0,0.3);
+    }
+  }
+`;
+
 
 const MakeDic = () => {
   let history = useHistory();
@@ -33,7 +74,7 @@ const MakeDic = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit}>
       <label for="select">분류</label>
       <select id="select" onChange={onChange}>
         <option value="1">포켓몬</option>
@@ -46,20 +87,18 @@ const MakeDic = () => {
         id="title"
         type="text"
         required
-        placeholder="단어"
         onChange={onChange}
       />
       <br />
       <label for="content">단어의 뜻</label>
       <textarea
         id="content"
-        placeholder="단어의 뜻"
         maxLength="100"
         onChange={onChange}
       />
       <br />
       <button type="submit">작성 완료</button>
-    </form>
+    </Form>
   );
 };
 
