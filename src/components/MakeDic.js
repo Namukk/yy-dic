@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { dbService } from "../fbase";
 import { useHistory } from "react-router-dom";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Form = styled.form`
   width: 100%;
@@ -12,14 +12,16 @@ const Form = styled.form`
   align-items: center;
   font-size: 17px;
   label {
-    width : 400px;
+    width: 400px;
     text-align: left;
     margin: 0 0 15px 10px;
   }
-  input, select, textarea {
+  input,
+  select,
+  textarea {
     width: 400px;
     height: 40px;
-    padding : 5px;
+    padding: 5px;
     margin-bottom: 20px;
     border: 3px black solid;
     border-radius: 5px;
@@ -34,11 +36,11 @@ const Form = styled.form`
     background: none;
     border: 3px black solid;
     border-radius: 10px;
-    padding : 5px;
+    padding: 5px;
     transition: 0.3s ease-in-out;
     cursor: pointer;
     &:hover {
-      background-color: rgba(0,0,0,0.3);
+      background-color: rgba(0, 0, 0, 0.3);
     }
   }
 `;
@@ -48,6 +50,16 @@ const MakeDic = () => {
   const [vocaId, setVocaId] = useState("1");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [dics, setDics] = useState([]);
+  const getDics = async () => {
+    const dbDics = await dbService.collection("words").get();
+    dbDics.forEach((document) => {
+      setDics((prev) => [document.data(), ...prev]);
+    });
+  };
+  useEffect(() => {
+    getDics();
+  }, []);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -56,7 +68,7 @@ const MakeDic = () => {
       createdAt: Date.now(),
       voca: [{ name: title, meaning: content }],
     });
-    history.push("/dic")
+    history.push("/");
   };
 
   const onChange = (event) => {
@@ -72,7 +84,7 @@ const MakeDic = () => {
       setContent(value);
     }
   };
-
+  console.log(dics);
   return (
     <Form onSubmit={onSubmit}>
       <label for="select">분류</label>
@@ -83,19 +95,10 @@ const MakeDic = () => {
       </select>
       <br />
       <label for="title">단어</label>
-      <input
-        id="title"
-        type="text"
-        required
-        onChange={onChange}
-      />
+      <input id="title" type="text" required onChange={onChange} />
       <br />
       <label for="content">단어의 뜻</label>
-      <textarea
-        id="content"
-        maxLength="100"
-        onChange={onChange}
-      />
+      <textarea id="content" maxLength="100" onChange={onChange} />
       <br />
       <button type="submit">작성 완료</button>
     </Form>

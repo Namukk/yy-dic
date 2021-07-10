@@ -1,5 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router";
 import AuthForm from "../../components/AuthForm";
 
 // const SignUp = ({ isLoggedIn }) => {

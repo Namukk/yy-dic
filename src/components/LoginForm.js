@@ -61,7 +61,7 @@ const LoginForm = () => {
       let data;
       if (newAccount) {
         data = await authService.signInWithEmailAndPassword(email, password);
-      }
+      } // if는 필요 없는듯
       console.log(data);
     } catch (error) {
       setError(error.message);
