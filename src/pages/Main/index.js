@@ -18,6 +18,7 @@ import {
 import LoginForm from "../../components/LoginForm";
 import Profile from "../../components/Profile";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Name = styled.div`
   display: flex;
@@ -33,7 +34,7 @@ const Main = ({ isLoggedIn, userObj }) => {
       <MainWrapper>
         <MainLeft>
           <h2>HOT DIC</h2>
-
+          <Link to="/dic/form">글쓰기</Link>
           <HotDic>
             {dummyHotDic.map((v) => (
               <HotDicContent key={v.id}>
