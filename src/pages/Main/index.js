@@ -16,9 +16,10 @@ import {
   dummyTodayBest,
 } from "./dummy";
 import LoginForm from "../../components/LoginForm";
-import Profile from "../../components/Profile";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Home from "./dummyDic";
+import { dbService } from "../../fbase";
 
 const Name = styled.div`
   display: flex;
@@ -35,14 +36,15 @@ const Main = ({ isLoggedIn, userObj }) => {
         <MainLeft>
           <h2>HOT DIC</h2>
           <Link to="/dic/form">글쓰기</Link>
-          <HotDic>
+          {/* <HotDic>
             {dummyHotDic.map((v) => (
               <HotDicContent key={v.id}>
                 <div className="dic-cover">{v.name[0]}</div>
                 <div className="dic-name">{v.name}</div>
               </HotDicContent>
             ))}
-          </HotDic>
+          </HotDic> */}
+          <Home />
           <DummyAD>광고에요 광고!! 누르지 마세요!</DummyAD>
           <h2>Monthly Best Contents</h2>
 

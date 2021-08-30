@@ -47,10 +47,12 @@ const Form = styled.form`
 
 const MakeDic = () => {
   let history = useHistory();
-  const [vocaId, setVocaId] = useState("1");
+  // const [valueName, setValueName] = useState("");
+  const [vocaId, setVocaId] = useState("포켓몬");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [dics, setDics] = useState([]);
+
   const getDics = async () => {
     const dbDics = await dbService.collection("words").get();
     dbDics.forEach((document) => {
@@ -59,17 +61,55 @@ const MakeDic = () => {
   };
   useEffect(() => {
     getDics();
+    // console.log(dics);
   }, []);
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    await dbService.collection("words").add({
-      vocaId,
-      createdAt: Date.now(),
-      voca: [{ name: title, meaning: content }],
+    // await dbService
+    //   .collection("words")
+    //   .doc(vocaId)
+    //   .set({
+    //     vocaId,
+    //     createdAt: Date.now(),
+    //     voca: [{ name: title, meaning: content }],
+    //   });
+    const dbDocs = dbService.collection("words").doc(vocaId);
+
+    const vocaData = {
+      [title]: { meaning: content, createdAt: Date.now() },
+    };
+    await dbDocs.get().then((doc) => {
+      if (doc.exists) {
+        // dbService.collection("words").doc(vocaId).update(vocaData, doc.data());
+        dbDocs.onSnapshot((docs) => {
+          dbDocs.update(vocaData, docs.data());
+          console.log("Current data: ", docs.data());
+          // const myObj = doc.data();
+          // console.log(Object.keys(myObj));
+        });
+      } else {
+        dbDocs.set(vocaData);
+        console.log("Document data:", doc.data());
+        // const myObj = doc.data();
+        // console.log(Object.keys(myObj));
+      }
     });
+    // await dbDocs.collection(vocaId).add(vocaData);
+
     history.push("/");
   };
+
+  // const onSubmitUpdate = async (event) => {
+  //   event.preventDefault();
+  //   const vocaData = { name: title, meaning: content };
+  //   const docData = {
+  //     vocaId,
+  //     createdAt: Date.now(),
+  //     voca: [{ name: title, meaning: content }],
+  //   };
+  //   await dbService.collection("words").doc(vocaId).update(docData);
+  // };
 
   const onChange = (event) => {
     const {
@@ -83,15 +123,24 @@ const MakeDic = () => {
     } else if (id === "content") {
       setContent(value);
     }
+    // else if (id === "valueName") {
+    //   setValueName(value);
+    // }
   };
-  console.log(dics);
+  // console.log(dics);
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit} vocaId={vocaId}>
       <label for="select">분류</label>
       <select id="select" onChange={onChange}>
-        <option value="1">포켓몬</option>
-        <option value="2">코난</option>
-        <option value="3">디지몬</option>
+        <option value="포켓몬" id="valueName">
+          포켓몬
+        </option>
+        <option value="코난" id="valueName">
+          코난
+        </option>
+        <option value="디지몬" id="valueName">
+          디지몬
+        </option>
       </select>
       <br />
       <label for="title">단어</label>
