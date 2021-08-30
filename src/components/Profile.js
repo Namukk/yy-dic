@@ -23,6 +23,7 @@ const Profile = ({ userObj, refreshUser, isLoggedIn }) => {
         displayName: newDisplayName,
       });
       refreshUser();
+      refresh();
     }
   };
 

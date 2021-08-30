@@ -3,14 +3,12 @@ import MakeDic from "./MakeDic";
 import { Link } from "react-router-dom";
 import VocaPage from "../pages/VocaPage";
 
-const DicRouter = ({ match }) => {
+const DicRouter = ({ match, vocaId }) => {
   const { id } = match.params;
   if (id === "form") {
-    return <MakeDic />
-
+    return <MakeDic vocaId={vocaId} />;
   } else if (!isNaN(id)) {
-    return <VocaPage vocaId={id}/>
-        
+    return <VocaPage vocaId={vocaId} />;
   }
   return (
     <>

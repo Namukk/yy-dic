@@ -13,18 +13,34 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
     <Router>
       <Switch>
         <Route exact path="/">
-          <MainTop userObj={userObj} isLoggedIn={isLoggedIn}/>
+          <MainTop userObj={userObj} isLoggedIn={isLoggedIn} />
           <Main userObj={userObj} isLoggedIn={isLoggedIn} />
         </Route>
-        <Route exact path="/dic"
-          render={props => <><MainTop userObj={userObj} isLoggedIn={isLoggedIn}/> <DicRouter match = {props.match}/> </>}
+        <Route
+          exact
+          path="/dic"
+          render={(props) => (
+            <>
+              <MainTop userObj={userObj} isLoggedIn={isLoggedIn} />{" "}
+              <DicRouter match={props.match} />{" "}
+            </>
+          )}
         />
-        <Route path="/dic/:id" 
-          render={props => <><MainTop userObj={userObj} isLoggedIn={isLoggedIn}/> <DicRouter match = {props.match}/> </>}
+        <Route path="/dic/디지몬" />
+        <Route path="/dic/포켓몬" />
+        <Route path="/dic/코난" />
+        <Route
+          path="/dic/:id"
+          render={(props) => (
+            <>
+              <MainTop userObj={userObj} isLoggedIn={isLoggedIn} />{" "}
+              <DicRouter match={props.match} />{" "}
+            </>
+          )}
         />
-          
+
         <Route path="/com">
-          <MainTop userObj={userObj} isLoggedIn={isLoggedIn}/>
+          <MainTop userObj={userObj} isLoggedIn={isLoggedIn} />
           Community
         </Route>
         <Route path="/profile">
@@ -35,7 +51,7 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
           />
         </Route>
         <Route path="/signup">
-          <UserInfo userObj={userObj} isLoggedIn={isLoggedIn}/>
+          <UserInfo userObj={userObj} isLoggedIn={isLoggedIn} />
           <SignUp isLoggedIn={isLoggedIn} />
         </Route>
       </Switch>
